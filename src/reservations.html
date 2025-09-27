@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Réservations - EcoTextile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <link rel="stylesheet" href="./styles/globals.css">
+    <link rel="stylesheet" href="./styles/main.css">
+</head>
+<body class="min-h-screen bg-background text-foreground">
+    <!-- Header -->
+    <header class="bg-card shadow-sm border-b sticky top-0 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center gap-2">
+                    <a href="index.html" class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center">
+                            <i data-lucide="recycle" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span class="text-xl font-semibold text-foreground">EcoTextile</span>
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-6">
+                    <a href="index.html" class="nav-link">Accueil</a>
+                    <a href="articles.html" class="nav-link">Articles</a>
+                    <a href="about.html" class="nav-link">Qui sommes-nous ?</a>
+                    <a href="how-it-works.html" class="nav-link">Fonctionnement</a>
+                    <a href="impact.html" class="nav-link">Impact écologique</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </nav>
+
+                <!-- Auth Section -->
+                <div class="hidden md:flex items-center gap-3" id="auth-section">
+                    <button onclick="openAuthModal()" class="btn btn-primary">
+                        <i data-lucide="user" class="w-4 h-4"></i>
+                        Se connecter
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden" onclick="toggleMobileMenu()">
+                    <i data-lucide="menu" class="h-5 w-5"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-card border-b shadow-lg">
+            <div class="container mx-auto px-4 py-4">
+                <nav class="flex flex-col gap-2">
+                    <a href="index.html" class="nav-link-mobile">Accueil</a>
+                    <a href="articles.html" class="nav-link-mobile">Articles</a>
+                    <a href="about.html" class="nav-link-mobile">Qui sommes-nous ?</a>
+                    <a href="how-it-works.html" class="nav-link-mobile">Fonctionnement</a>
+                    <a href="impact.html" class="nav-link-mobile">Impact écologique</a>
+                    <a href="contact.html" class="nav-link-mobile">Contact</a>
+                </nav>
+                <div class="border-t pt-4 mt-4" id="mobile-auth-section">
+                    <button onclick="openAuthModal()" class="w-full btn btn-primary">
+                        <i data-lucide="user" class="w-4 h-4"></i>
+                        Se connecter
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="flex-1 bg-muted py-16">
+        <div class="container mx-auto px-4">
+            <!-- Header -->
+            <div class="mb-8">
+                <h1 class="text-3xl mb-2 text-foreground">Mes Réservations</h1>
+                <p class="text-muted-foreground">
+                    Gérez vos articles réservés et suivez l'état de vos commandes
+                </p>
+            </div>
+
+            <!-- Message de redirection si non connecté -->
+            <div id="not-logged-in" class="bg-card border border-border rounded-lg p-8 text-center">
+                <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i data-lucide="lock" class="w-8 h-8 text-blue-600"></i>
+                </div>
+                <h2 class="text-xl font-semibold text-foreground mb-2">Connexion requise</h2>
+                <p class="text-muted-foreground mb-4">
+                    Vous devez être connecté pour voir vos réservations.
+                </p>
+                <button onclick="openAuthModal()" class="btn btn-primary">
+                    <i data-lucide="user" class="w-4 h-4"></i>
+                    Se connecter
+                </button>
+            </div>
+
+            <!-- Contenu pour utilisateur connecté -->
+            <div id="logged-in-content" class="hidden">
+                <!-- Statistiques -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-card border border-border rounded-lg p-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-muted-foreground mb-1">Articles réservés</p>
+                                <p class="text-2xl font-semibold text-blue-600" id="reserved-count">0</p>
+                            </div>
+                            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                                <i data-lucide="shopping-bag" class="w-6 h-6 text-blue-600"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-card border border-border rounded-lg p-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-muted-foreground mb-1">Valeur totale</p>
+                                <p class="text-2xl font-semibold text-green-600" id="total-value">0€</p>
+                            </div>
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                                <i data-lucide="euro" class="w-6 h-6 text-green-600"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-card border border-border rounded-lg p-6">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <p class="text-sm text-muted-foreground mb-1">Expiration bientôt</p>
+                                <p class="text-2xl font-semibold text-orange-600" id="expiring-count">0</p>
+                            </div>
+                            <div class="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
+                                <i data-lucide="clock" class="w-6 h-6 text-orange-600"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Liste des réservations -->
+                <div class="bg-card border border-border rounded-lg">
+                    <div class="p-6 border-b border-border">
+                        <h2 class="text-xl font-semibold text-foreground">Vos Réservations</h2>
+                    </div>
+                    
+                    <!-- Réservations vides -->
+                    <div id="no-reservations" class="p-8 text-center">
+                        <div class="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i data-lucide="shopping-bag" class="w-8 h-8 text-muted-foreground"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold text-foreground mb-2">Aucune réservation</h3>
+                        <p class="text-muted-foreground mb-4">
+                            Vous n'avez pas encore réservé d'articles. Parcourez notre catalogue pour découvrir des pièces uniques !
+                        </p>
+                        <a href="articles.html" class="btn btn-primary">
+                            <i data-lucide="search" class="w-4 h-4"></i>
+                            Découvrir nos articles
+                        </a>
+                    </div>
+
+                    <!-- Liste des réservations (sera remplie dynamiquement) -->
+                    <div id="reservations-list" class="hidden">
+                        <!-- Les réservations seront ajoutées ici par JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Informations importantes -->
+                <div class="mt-8 bg-blue-50 border border-blue-200 rounded-lg p-6">
+                    <div class="flex items-start gap-3">
+                        <i data-lucide="info" class="w-5 h-5 text-blue-600 mt-0.5"></i>
+                        <div>
+                            <h3 class="font-semibold text-blue-900 mb-2">Informations importantes</h3>
+                            <ul class="space-y-1 text-blue-800 text-sm">
+                                <li>• Vos réservations sont valables pendant 48 heures</li>
+                                <li>• Le paiement se fait uniquement sur place lors de la récupération</li>
+                                <li>• Possibilité d'essayage avant l'achat définitif</li>
+                                <li>• Nos horaires : Lundi-Samedi 9h-18h</li>
+                                <li>• Adresse : 123 Rue de la Recyclerie, 75000 Paris</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white">
+        <div class="container mx-auto px-4 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Logo et description -->
+                <div class="md:col-span-2">
+                    <div class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 bg-green-600 rounded-full flex items-center justify-center">
+                            <i data-lucide="recycle" class="w-5 h-5 text-white"></i>
+                        </div>
+                        <span class="text-xl font-semibold">EcoTextile</span>
+                    </div>
+                    <p class="text-gray-300 mb-4 max-w-md">
+                        Votre recyclerie textile locale, engagée pour l'environnement et l'économie circulaire. 
+                        Donnez une seconde vie à vos vêtements et trouvez des pièces uniques à prix abordables.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Liens rapides -->
+                <div>
+                    <h3 class="font-semibold mb-4">Liens rapides</h3>
+                    <ul class="space-y-2">
+                        <li><a href="articles.html" class="text-gray-300 hover:text-white transition-colors">Nos articles</a></li>
+                        <li><a href="how-it-works.html" class="text-gray-300 hover:text-white transition-colors">Comment ça marche</a></li>
+                        <li><a href="impact.html" class="text-gray-300 hover:text-white transition-colors">Notre impact</a></li>
+                        <li><a href="about.html" class="text-gray-300 hover:text-white transition-colors">Qui sommes-nous</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h3 class="font-semibold mb-4">Contact</h3>
+                    <div class="space-y-2 text-gray-300">
+                        <div class="flex items-center gap-2">
+                            <i data-lucide="mail" class="w-4 h-4"></i>
+                            <span>contact@ecotextile.fr</span>
+                        </div>
+                        <p>123 Rue de la Recyclerie<br />75000 Paris</p>
+                        <p>Du lundi au samedi<br />9h - 18h</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 EcoTextile. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Auth Modal -->
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>
+                    <i data-lucide="user" class="w-5 h-5"></i>
+                    Connexion / Inscription
+                </h2>
+                <button onclick="closeAuthModal()" class="modal-close">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Tabs -->
+            <div class="modal-tabs">
+                <button id="login-tab" onclick="switchAuthTab('login')" class="tab-button active">Connexion</button>
+                <button id="register-tab" onclick="switchAuthTab('register')" class="tab-button">Inscription</button>
+            </div>
+
+            <!-- Login Form -->
+            <div id="login-form" class="tab-content">
+                <form onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label for="login-email">Email</label>
+                        <input type="email" id="login-email" placeholder="votre@email.fr" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password">Mot de passe</label>
+                        <input type="password" id="login-password" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-full">
+                        Se connecter
+                    </button>
+                    <div class="demo-info">
+                        <p><strong>Compte de démonstration :</strong></p>
+                        <p>Admin : admin@ecotextile.fr / admin123</p>
+                        <p>Utilisateur : n'importe quel email/mot de passe</p>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Register Form -->
+            <div id="register-form" class="tab-content hidden">
+                <form onsubmit="handleRegister(event)">
+                    <div class="form-group">
+                        <label for="register-name">Nom complet</label>
+                        <input type="text" id="register-name" placeholder="Jean Dupont" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-email">Email</label>
+                        <input type="email" id="register-email" placeholder="votre@email.fr" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password">Mot de passe</label>
+                        <input type="password" id="register-password" placeholder="••••••••" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-confirm">Confirmer le mot de passe</label>
+                        <input type="password" id="register-confirm" placeholder="••••••••" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-full">
+                        Créer un compte
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <span id="toast-message"></span>
+    </div>
+
+    <script src="./scripts/main.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Initialize reservations page
+        window.addEventListener('DOMContentLoaded', function() {
+            initializeReservationsPage();
+        });
+    </script>
+</body>
+</html>
