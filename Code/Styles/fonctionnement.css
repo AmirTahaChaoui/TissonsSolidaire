@@ -1,0 +1,127 @@
+/* Styles spécifiques à la page Fonctionnement – s’appuie sur style.css */
+
+.page-hero{
+  margin: 22px auto 18px;
+  background: linear-gradient(0deg, #ecfff6 0%, #f6fffb 100%);
+  border: 1px solid #ccf0dd;
+  border-radius: 14px;
+  padding: 20px 22px;
+  text-align: center;
+}
+.page-hero h1{ margin: 6px 0 6px; }
+.page-hero .lead{ margin: 0; color: #4a575f; }
+
+/* Info cards */
+.info-grid{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 12px;
+}
+.info-card{
+  display: flex; gap: 14px; align-items: center;
+  background: #fff; border: 1.5px solid var(--border);
+  border-radius: 12px; padding: 16px 16px;
+}
+.info-card h3{ margin: 0 0 6px; font-size: 1.02rem; }
+.info-card p{ margin: 0; color: #445058; }
+.info-icon{
+  width: 40px; height: 40px; border-radius: 999px;
+  display: grid; place-items: center; color: #0f6b38; font-size: 1.2rem;
+  background: #eafcf1; border: 1px solid #c5efda;
+}
+.info-icon.blue   { color:#1e4fd7; background:#e9f0ff; border-color:#cfdcff; }
+.info-icon.purple { color:#6b3cd2; background:#f1eaff; border-color:#e2d7ff; }
+
+/* Sections */
+.section-gap{ margin: 36px auto 10px; }
+.section-title{ text-align:center; margin: 0 0 6px; }
+.section-sub{ text-align:center; margin: 0 0 22px; color:#5a666f }
+
+/* Steps (4 colonnes) */
+.steps-grid{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+.step{ padding: 20px 18px 16px; }
+.step-top{ display:flex; align-items:center; justify-content: space-between; margin-bottom: 8px; }
+.ic-round{
+  width: 40px; height: 40px; border-radius: 999px;
+  display: grid; place-items: center; background:#eafcf1; color:#17994b; font-size:1.15rem;
+}
+.num{
+  width: 34px; height: 34px; border-radius: 999px;
+  display:grid; place-items:center; font-weight:800; color:#17994b; background:#eafcf1;
+}
+.step h3{ margin: 6px 0 8px; font-size: 1.03rem; }
+.step p{ margin: 0; color: #4a565f; }
+
+/* Accept / Reject */
+.accept-reject{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.col-title{
+  display:flex; align-items:center; gap:8px; margin: 0 0 10px; font-size:1.06rem;
+}
+.dot{ width:9px; height:9px; border-radius:999px; display:inline-block; }
+.dot.green{ background:#1bc05e }
+.dot.red{ background:#e03131 }
+
+.accept-card, .reject-card{
+  background: #fff; border: 1.5px solid var(--border);
+  border-radius: 12px; padding: 14px 14px; margin-bottom: 12px;
+}
+.accept-head{ display:flex; align-items:center; gap:10px; margin-bottom: 8px; }
+.ic-pill{
+  width: 34px; height: 34px; border-radius: 8px; display:grid; place-items:center;
+  background:#eafcf1; color:#17994b; font-size:1.05rem; border:1px solid #c5efda;
+}
+.chips{ display:flex; flex-wrap:wrap; gap:8px; }
+.chip{
+  display:inline-block; padding:6px 10px; border-radius:999px;
+  background:#f0faf4; color:#17994b; border:1px solid #cfeee0; font-weight:600; font-size:.9rem;
+}
+.reject-card .bad-list{
+  margin:0; padding-left: 18px; color:#4a565f;
+}
+.reject-card .bad-list li{ margin: 8px 0; }
+.tip{
+  display:flex; gap:10px; align-items:flex-start;
+  background:#f4f9ff; border:1.5px solid #d7e9ff; border-radius:12px; padding:12px 14px;
+}
+.tip-ic{
+  width: 28px; height: 28px; border-radius: 8px; display:grid; place-items:center;
+  background:#e8f0ff; color:#1e4fd7;
+}
+.tip p{ margin: 2px 0 0; color:#445058 }
+
+/* FAQ */
+.faq{
+  display: grid; gap: 12px; grid-template-columns: 1fr;
+}
+.faq-item{ padding: 14px 16px; }
+.faq-item h4{ margin: 4px 0 6px; font-size: 1.02rem; }
+.faq-item p{ margin: 0; color:#445058 }
+
+/* Buttons */
+.btn-primary{
+  background:#2a6de6; color:#fff; border:1px solid #2a6de6; border-radius:8px; padding:10px 18px;
+}
+.btn-primary:hover{ background:#1f56bb; border-color:#1f56bb; }
+.center{ text-align: center; margin-top: 16px; }
+
+/* Responsive */
+@media (max-width: 1024px){
+  .steps-grid{ grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 900px){
+  .info-grid{ grid-template-columns: 1fr; }
+  .accept-reject{ grid-template-columns: 1fr; }
+}
+@media (max-width: 560px){
+  .page-hero{ padding: 16px; }
+  .step{ padding: 18px 14px; }
+}
