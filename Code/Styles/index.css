@@ -1,6 +1,6 @@
 :root{
   --bg:#f7faf9;
-  --card:#ffffff;
+  --card:#f4fff5;
   --muted:#55606a;
   --text:#1a1d21;
   --border:#e5edf0;
@@ -14,11 +14,9 @@
   --radius-sm:8px;
 }
 
-*{box-sizing:border-box}
-
 body {
   margin: 0;
-  font-family: 'Segoe UI', 'Arial', sans-serif;
+  font-family: 'Arial', sans-serif;
   background: #f8fafc;
   color: #222;
   overflow-x: hidden;
@@ -38,7 +36,7 @@ header {
 .logo, .logo-footer {
   display: flex;
   align-items: center;
-  font-weight: 700;
+  font-weight: 100;
   color: #1bc05e;
   font-size: 1.1em;
   gap: 10px;
@@ -55,9 +53,9 @@ header {
   text-decoration: none;
   transition: color 0.2s;
 }
-.nav-links .active a, .nav-links a:hover {
+.nav-links, .nav-links a:hover {
   color: #1bc05e;
-  font-weight: 600;
+  font-weight: 100;
 }
 .btn-login {
   background: #111;
@@ -78,31 +76,32 @@ header {
 /* Section backgrounds - full width */
 .section-bg{
   background:var(--card);
-  box-shadow:var(--shadow);
-  border:1px solid #dff3e8;
   width:100%;
-  margin-bottom:36px;
   box-sizing:border-box;
+}
+
+.section2-bg{
+  background:white;
+  padding: 80px;
 }
 
 /* Content containers - centered */
 .section-content{
   max-width:1180px;
   margin:0 auto;
-  padding:34px 5vw;
 }
 
 .hero {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 40px 5vw;
+  padding:150px;
   gap: 38px;
 }
 .hero-text { max-width: 540px; }
 .hero-text h1 {
   font-size: 2.4em;
-  font-weight: 700;
+  font-weight: 100;
   margin-bottom: 18px;
 }
 .hero-text .highlight { color: #1bc05e; }
@@ -160,7 +159,7 @@ header {
 }
 .stat-number {
   font-size: 1.35em;
-  font-weight: 700;
+  font-weight: 100;
   color: #1bc05e;
   margin: 0;
 }
@@ -169,9 +168,7 @@ header {
 .history {
   display: flex;
   align-items: center;
-  background: #fff;
-  margin: 32px auto 38px;
-  padding: 32px 4vw;
+  padding: 100px;
   max-width: 1050px;
   gap: 34px;
 }
@@ -221,7 +218,7 @@ header {
 .step-number {
   background: #eafcf1;
   color: #1bc05e;
-  font-weight: 700;
+  font-weight: 100;
   display: inline-block;
   border-radius: 50%;
   width: 36px;
