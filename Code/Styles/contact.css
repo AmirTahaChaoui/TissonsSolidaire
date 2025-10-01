@@ -3,33 +3,48 @@
    =========================== */
 
 /* En‑tête (hero) */
-.page-hero{
-  margin: 22px auto 18px;
-  background: linear-gradient(180deg, #eefdf6 0%, #f0f6ff 100%);
-  border: 1px solid #e7f3ee;
-  border-radius: 14px;
-  padding: 28px 22px;
-  text-align: center;
-}
-.page-hero h1{ margin: 0 0 6px; font-size: 2.1rem; }
-.page-hero .lead{ margin: 0; color: #4a575f; }
 
 /* Cartes coordonnées (4 tuiles) */
 .contact-cards{
-  display: grid; grid-template-columns: repeat(4, 1fr);
-  gap: 16px; margin-bottom: 24px;
+  display:grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr)); /* anti-débordement */
+  gap: 28px;
+  margin: 100px auto;        /* centre horizontalement */
+  max-width: 1300px;        /* largeur contenue */
+  width: 100%;
+  padding-inline: 24px;     /* conserve l’espace latéral */
 }
-.contact-card{ text-align:center; padding: 22px 16px; }
+.card-lite{
+  background:#fff;
+  border:1px solid #e9edf2;
+  border-radius:16px;
+  padding:24px 16px;
+  box-shadow:0 1px 0 #f5f7f9;
+}
+.contact-card{ text-align:center; }
+
+/* Icône avec anneau doux */
 .card-ic{
-  width: 44px; height: 44px; border-radius: 999px; margin: 2px auto 8px;
-  display: grid; place-items: center; font-size: 1.2rem;
-  border: 1px solid #cfeee0; background:#eafcf1; color:#17994b;
+  width:36px; height:36px;
+  border-radius:999px;
+  margin:6px auto 14px;
+  display:grid; place-items:center;
+  font-size:1.35rem;
+  background:#f2f6fb; color:#2a6de6;
 }
-.card-ic.b{ background:#eef3ff; color:#2a6de6; border-color:#d6e1ff; }
-.card-ic.p{ background:#f5eaff; color:#7a3fe6; border-color:#e7d9ff; }
-.card-ic.g{ background:#ecfff6; color:#14a058; border-color:#cfeee0; }
-.card-ic.r{ background:#ffecec; color:#ce3434; border-color:#ffd4d4; }
-.contact-card h3{ margin: 6px 0 6px; }
+/* variantes couleur (identiques à la maquette) */
+.card-ic.r{ background:#ffeaea;}
+.card-ic.b{ background:#eef3ff;}
+.card-ic.g{ background:#ecfff6; }
+.card-ic.p{ background:#f5eaff;}
+
+.contact-card h3{
+  margin:6px 0 10px;
+  font-size:1.15rem;
+  font-weight:800;
+  color:#0f1720;
+}
+.contact-card .muted{ color:#585858; }
 
 /* ===========================
    Bloc Formulaire + Carte (fidèle à la maquette)
@@ -38,19 +53,18 @@
 /* Grille 2 colonnes */
 .contact-two{
   display:grid;
-  grid-template-columns: 1.05fr .95fr;
-  gap: 28px;
+  /* autorise le shrink des colonnes sans débordement */
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+  gap: 60px;
   align-items:start;
   margin: 16px auto 28px;
+  max-width: 1300px;
 }
-/* Alias si ton HTML utilise encore .grid-two */
-.grid-two{ 
-    display:grid; 
-    grid-template-columns: 1.05fr .95fr; 
-    gap:28px; 
-    align-items:start; 
-    margin:16px auto 28px;
-    }
+
+/* Permet aux cartes de se rétrécir dans la grille */
+.contact-two > * {
+  min-width: 0;
+}
 
 .form-box,
 .map-box{
@@ -59,7 +73,6 @@
   border-radius:16px;
   padding:18px 18px 16px;
   box-shadow:0 1px 0 #f5f7f9;
-  width:100%; 
 }
 .contact-col-title{
   margin:0 0 12px;
@@ -71,13 +84,18 @@
 /* Formulaire compact */
 .contact-form-tight{ display:grid; gap:12px; }
 .contact-form-tight .row{ display:grid; gap:12px; }
-.contact-form-tight .row.two{ grid-template-columns:1fr 1fr; gap:12px; }
-
+.contact-form-tight .row.two{ 
+  /* évite le débordement horizontal des deux colonnes */
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+  gap:12px; 
+}
 /* Compat: anciens noms (si tu n'as pas changé le HTML) */
 .contact-form{ display:grid; gap:12px; }
 .form-row{ display:grid; gap:12px; }
-.form-row.two{ grid-template-columns:1fr 1fr; gap:12px; }
-
+.form-row.two{ 
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+  gap:12px;
+}
 .field label{
   display:block;
   font-weight:700;
@@ -89,22 +107,18 @@
 .field select,
 .field textarea{
   width:100%;
+  max-width:100%;              /* ne dépasse jamais le parent */
+  box-sizing:border-box;       /* padding + border inclus dans la largeur */
   font-size:1.02rem;
   color:#111827;
-  background:#f2f3f6;              /* gris doux comme la capture */
-  border:1px solid transparent;     /* pas de bord visible */
+  background:#f6f6f6;
+  border:1px solid transparent;
   border-radius:12px;
   padding:12px 14px;
   outline:none;
   transition:box-shadow .15s ease, background .15s ease;
 }
 .field textarea{ padding:12px 14px; resize:vertical; min-height:120px; }
-.field input:focus,
-.field select:focus,
-.field textarea:focus{
-  background:#eef1f5;
-  box-shadow:0 0 0 3px #cfe8dc;     /* halo vert très léger */
-}
 
 /* Select avec chevron interne */
 .field select{
@@ -125,7 +139,7 @@
   padding:14px 16px; cursor:pointer;
   transition:background .15s ease, transform .02s ease;
 }
-.send-btn:hover{ background:#0a8a3b; }
+.send-btn:hover{ background:#1d1d1d; }
 .send-btn:active{ transform:translateY(1px); }
 .send-btn::before{
   content:"";
@@ -148,7 +162,7 @@
 
 /* Bouton Maps blanc, bord fin, plein largeur */
 .map-cta{
-  display:block; width:100%; text-align:center; text-decoration:none;
+  display:block; text-align:center; text-decoration:none;
   color:#0f1720; background:#ffffff;
   border:1px solid #e7eaf0; border-radius:12px;
   padding:12px 16px; font-weight:800;
@@ -159,11 +173,11 @@
 /* ===========================
    Réseaux sociaux (panneau simple)
    =========================== */
-.social-panel{ margin-bottom: 26px; }
-.social-card{ text-align:center; padding: 18px 16px; }
+.social-panel{display:flex; justify-content:center; }
+.social-card{ text-align:center; padding: 18px 16px; margin: 100px 0; width:70%}
 .social-buttons{ display:flex; gap: 10px; justify-content:center; flex-wrap: wrap; margin: 6px 0 4px; }
 .soc-btn{
-  background:#f7f8fa; border:1px solid var(--border); border-radius: 999px;
+  border:1px solid var(--border); border-radius: 9px;
   padding:8px 14px; text-decoration:none; color:#1a1d21; font-weight:600; font-size:.95rem;
 }
 .soc-btn:hover{ background:#fff }
@@ -174,38 +188,115 @@
    Dons (deux cartes : ponctuel / mensuel)
    =========================== */
 .donations{
-  background:#f3fff8; border-top:1px solid #dff6ea; padding: 34px 0;
+  /* fond blanc comme la maquette */
+  background: transparent;
+  border-top: none;
+  padding: 40px 0 100px;
+  --border: #e7eaf0;
 }
-.section-title{ text-align:center; margin:0 0 6px; font-size:1.55rem; }
-.section-sub{ text-align:center; margin:0 0 18px; color:#5a666f; }
+.section-title{
+  text-align:center;
+  margin:0 0 8px;
+  font-size:clamp(1.9rem, 2.6vw, 2.6rem);
+}
+.section-sub{
+  text-align:center;
+  margin:0 0 26px;
+  color:#5a666f;
+}
+/* grille des deux cartes (centrée) */
 .don-grid{
-  display:grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 8px;
+  display:grid;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+  max-width:1200px;
+  margin:8px auto 0;
+  padding-inline:24px;
 }
-.don-card{ text-align:center; padding: 18px 16px; }
-.don-ic{ font-size:1.6rem; margin-bottom: 6px; }
+
+/* carte */
+.don-card{
+  background:#fff;
+  border:1.5px solid var(--border);
+  border-radius:16px;
+  padding:28px 24px 24px;
+  box-shadow:0 1px 0 #f5f7f9;
+  text-align:center;
+  width:350px;
+  max-width:100%;             /* évite tout overflow en mobile */
+  margin-inline:auto;         /* sécurité de centrage */
+}
+.don-card h3{
+  margin:6px 0 8px;
+  font-size:1.4rem;
+  font-weight:800;
+}
+.don-card p{ margin:0 0 14px; color:#5a666f; }
+
+/* petite icône arrondie en haut de carte */
+.don-ic{
+  width:44px; height:44px;
+  border-radius:12px;
+  display:grid; place-items:center;
+  margin:0 auto 10px;
+  font-size:1.6rem;
+  background:linear-gradient(180deg,#eef3ff, #e7eefc);
+  box-shadow:0 1px 0 #e6ecfa;
+}
+.don-ic.heart{ background:linear-gradient(180deg,#ffe7ee,#ffe0ea); }
+.don-ic.recur{ background:linear-gradient(180deg,#eaf1ff,#e2ebff); }
+
+/* montants */
 .amounts{
-  display:grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 10px 0 12px;
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap:12px 18px;
+  margin: 25px 0;
 }
 .amount{
-  background:#fff; border:1.5px solid var(--border); border-radius: 10px; padding: 10px 0;
-  font-weight:700; cursor:pointer; transition:border-color .12s ease, box-shadow .12s ease;
+  background:#fff;
+  border:1.5px solid var(--border);
+  border-radius:12px;
+  padding:12px 0;
+  font-weight:700;
+  cursor:pointer;
+  transition:border-color .12s ease, box-shadow .12s ease, transform .02s ease;
 }
-.amount:hover{ border-color:#bfe9d2; box-shadow:0 2px 10px #dfeee8; }
-.btn.full{ width:100%; border-radius: 10px; }
-.mini-note{ text-align:center; margin-top: 14px; font-size: .93rem; }
+.amount:hover{ border-color:#bfe9d2; box-shadow:0 2px 10px #e7f5ee; }
+.amount:active{ transform:translateY(1px); }
+.amount.is-active{ border-color:#0aa043; box-shadow:0 0 0 3px rgba(10,160,67,.12); }
 
-/* Liens utiles */
-.link{ color:#2a6de6; text-decoration:none; }
-.link:hover{ text-decoration:underline; }
+/* bouton vert pleine largeur avec icône coeur */
+.btn.full{ width:100%; border-radius:12px; }
+.green-cta{
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  background:#0aa043; color:#fff;
+  border:none; border-radius:12px;
+  padding:10px; cursor:pointer;
+  transition: .15s ease, transform .02s ease;
+}
+.green-cta:hover{ background:#0a8e3c; }
+.green-cta:active{ transform:translateY(1px); }
+.ic-heart{
+  width:18px; height:18px; display:inline-block;
+  background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23ffffff" d="M12 21s-7.2-4.35-9.6-8.4C.86 9.5 2.3 6 5.4 6c2.04 0 3.06 1.2 3.6 2 .54-.8 1.56-2 3.6-2 3.1 0 4.54 3.5 3 6.6C19.2 16.65 12 21 12 21z"/></svg>');
+  background-repeat:no-repeat; background-size:18px 18px; background-position:center;
+}
+
+/* note en bas */
+.mini-note{ text-align:center; margin-top:18px; font-size:.93rem; }
+
 
 /* ===========================
    Responsive
    =========================== */
-@media (max-width: 1080px){
-  .contact-cards{ grid-template-columns: 1fr 1fr; }
+@media (max-width:1080px){
+  .contact-cards{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
+@media (max-width:680px){
+  .contact-cards{ grid-template-columns: 1fr; }
 }
 @media (max-width: 980px){
-  .contact-two, .grid-two{ grid-template-columns: 1fr; }
+  .contact-two{ grid-template-columns: 1fr; }
   .contact-form-tight .row.two, .form-row.two{ grid-template-columns:1fr; }
 }
 @media (max-width: 680px){

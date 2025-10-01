@@ -6,6 +6,7 @@
   <title>Contact</title>
   <link rel="stylesheet" href="../Styles/index.css">
   <link rel="stylesheet" href="../Styles/contact.css" />
+  <link rel="stylesheet" href="../Styles/fonctionnement.css" />
   <link rel="icon" href="img/logo.svg" />
 </head>
 <body>
@@ -29,7 +30,7 @@
 
   <main>
     <!-- En-tête -->
-    <section class="page-hero container">
+    <section class="page-hero">
       <h1>Contactez‑nous</h1>
       <p class="lead">
         Une question, une suggestion, ou envie de nous soutenir ? Nous sommes là pour vous écouter !
@@ -73,79 +74,78 @@
     </section>
 
     <!-- Formulaire + Carte -->
-    <!-- Remplace dans contact.html la section <section class="container grid-two"> ... </section> par ceci -->
-<section class="container contact-two">
-  <!-- Colonne formulaire -->
-  <article class="form-box">
-    <h2 class="contact-col-title">Envoyez‑nous un message</h2>
+    <section class="contact-two">
+    <!-- Colonne formulaire -->
+    <article class="form-box">
+      <h2 class="contact-col-title">Envoyez‑nous un message</h2>
 
-    <form class="contact-form-tight" action="#" method="post" novalidate>
-      <div class="row two">
-        <div class="field">
-          <label for="fullname">Nom complet *</label>
-          <input id="fullname" name="fullname" type="text" placeholder="Jean Dupont" required />
+      <form class="contact-form-tight" action="#" method="post" novalidate>
+        <div class="row two">
+          <div class="field">
+            <label for="fullname">Nom complet *</label>
+            <input id="fullname" name="fullname" type="text" placeholder="Jean Dupont" required />
+          </div>
+          <div class="field">
+            <label for="email">Email *</label>
+            <input id="email" name="email" type="email" placeholder="jean@exemple.fr" required />
+          </div>
         </div>
-        <div class="field">
-          <label for="email">Email *</label>
-          <input id="email" name="email" type="email" placeholder="jean@exemple.fr" required />
+
+        <div class="row">
+          <div class="field">
+            <label for="subject">Sujet *</label>
+            <select id="subject" name="subject" required>
+              <option value="">Choisissez un sujet</option>
+              <option value="don">Don de vêtements</option>
+              <option value="reservation">Réservation d’article</option>
+              <option value="partenariat">Partenariat</option>
+              <option value="autre">Autre</option>
+            </select>
+          </div>
         </div>
-      </div>
 
-      <div class="row">
-        <div class="field">
-          <label for="subject">Sujet *</label>
-          <select id="subject" name="subject" required>
-            <option value="">Choisissez un sujet</option>
-            <option value="don">Don de vêtements</option>
-            <option value="reservation">Réservation d’article</option>
-            <option value="partenariat">Partenariat</option>
-            <option value="autre">Autre</option>
-          </select>
+        <div class="row">
+          <div class="field">
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" rows="5" placeholder="Votre message..." required></textarea>
+          </div>
         </div>
-      </div>
 
-      <div class="row">
-        <div class="field">
-          <label for="message">Message *</label>
-          <textarea id="message" name="message" rows="5" placeholder="Votre message..." required></textarea>
+        <button type="submit" class="send-btn">
+          Envoyer le message
+        </button>
+      </form>
+    </article>
+
+      <!-- Colonne carte -->
+      <article class="map-box">
+        <h2 class="contact-col-title">Trouvez‑nous</h2>
+
+        <div class="map-canvas" role="img" aria-label="Carte — 123 Rue de la Recyclerie, 75000 Paris">
+          <svg width="60" height="60" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 22s7-5.4 7-12a7 7 0 1 0-14 0c0 6.6 7 12 7 12Z" fill="none" stroke="#2c3543" stroke-width="1.6"/>
+            <circle cx="12" cy="10" r="2.6" fill="none" stroke="#2c3543" stroke-width="1.6"/>
+          </svg>
+          <div class="map-title">Carte interactive</div>
+          <div class="map-sub">123 Rue de la Recyclerie, 75000 Paris</div>
         </div>
-      </div>
 
-      <button type="submit" class="send-btn">
-        Envoyer le message
-      </button>
-    </form>
-  </article>
-
-  <!-- Colonne carte -->
-  <article class="map-box">
-    <h2 class="contact-col-title">Trouvez‑nous</h2>
-
-    <div class="map-canvas" role="img" aria-label="Carte — 123 Rue de la Recyclerie, 75000 Paris">
-      <svg width="60" height="60" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12 22s7-5.4 7-12a7 7 0 1 0-14 0c0 6.6 7 12 7 12Z" fill="none" stroke="#2c3543" stroke-width="1.6"/>
-        <circle cx="12" cy="10" r="2.6" fill="none" stroke="#2c3543" stroke-width="1.6"/>
-      </svg>
-      <div class="map-title">Carte interactive</div>
-      <div class="map-sub">123 Rue de la Recyclerie, 75000 Paris</div>
-    </div>
-
-    <a class="map-cta" href="https://www.google.com/maps/search/?api=1&query=123+Rue+de+la+Recyclerie+75000+Paris" target="_blank" rel="noopener">
-      Voir dans Google Maps
-    </a>
-  </article>
-</section>
+        <a class="map-cta" href="https://www.google.com/maps/search/?api=1&query=123+Rue+de+la+Recyclerie+75000+Paris" target="_blank" rel="noopener">
+          Voir dans Google Maps
+        </a>
+      </article>
+    </section>
 
     <!-- Réseaux sociaux -->
     <section class="container social-panel">
       <article class="card-lite social-card">
         <h3>Suivez‑nous</h3>
         <div class="social-buttons">
-          <a href="#" class="soc-btn fb">Facebook</a>
-          <a href="#" class="soc-btn ig">Instagram</a>
-          <a href="#" class="soc-btn tw">Twitter</a>
+          <a href="https://www.facebook.com/tissonssolidaire" class="soc-btn fb">Facebook</a>
+          <a href="https://www.instagram.com/tissonssolidaire" class="soc-btn ig">Instagram</a>
+          <a href="https://twitter.com/tissonssolidaire" class="soc-btn tw">Twitter</a>
         </div>
-        <p class="muted small">
+        <p class="muted-small">
           Restez informé de nos actualités et découvrez nos nouvelles collections !
         </p>
       </article>
@@ -156,37 +156,45 @@
       <div class="container">
         <h2 class="section-title">Soutenez notre mission</h2>
         <p class="section-sub">Vos dons nous permettent de développer nos actions et d’aider plus de familles</p>
+
         <div class="don-grid">
-          <!-- Don ponctuel -->
-          <article class="don-card card-lite">
-            <div class="don-ic">💖</div>
+          <article class="don-card">
+            <div class="don-ic heart" aria-hidden="true">💝</div>
             <h3>Don ponctuel</h3>
             <p class="muted">Soutenez notre mission avec un don unique</p>
+
             <div class="amounts">
-              <button class="amount">10€</button>
-              <button class="amount">25€</button>
-              <button class="amount">50€</button>
-              <button class="amount">100€</button>
+              <button type="button" class="amount">10€</button>
+              <button type="button" class="amount">25€</button>
+              <button type="button" class="amount">50€</button>
+              <button type="button" class="amount">100€</button>
             </div>
-            <a href="contact.html" class="btn btn-green full">♡ Faire un don ponctuel</a>
+
+            <button type="button" class="btn full green-cta">
+              <span class="ic-heart" aria-hidden="true"></span>
+              Faire un don ponctuel
+            </button>
           </article>
-          <!-- Don mensuel -->
-          <article class="don-card card-lite">
-            <div class="don-ic">🏦</div>
+
+          <article class="don-card">
+            <div class="don-ic recur" aria-hidden="true">🔁</div>
             <h3>Don mensuel</h3>
             <p class="muted">Engagement régulier pour un impact durable</p>
+
             <div class="amounts">
-              <button class="amount">5€/mois</button>
-              <button class="amount">15€/mois</button>
-              <button class="amount">30€/mois</button>
-              <button class="amount">50€/mois</button>
+              <button type="button" class="amount">5€/mois</button>
+              <button type="button" class="amount">15€/mois</button>
+              <button type="button" class="amount">30€/mois</button>
+              <button type="button" class="amount">50€/mois</button>
             </div>
-            <a href="contact.html" class="btn btn-green full">♡ Faire un don mensuel</a>
+
+            <button type="button" class="btn full green-cta">
+              <span class="ic-heart" aria-hidden="true"></span>
+              Faire un don mensuel
+            </button>
           </article>
         </div>
-        <p class="muted mini-note">
-          ℹ️ Tous les dons sont déductibles à hauteur de 66% (particuliers) ou 60% (entreprises)
-        </p>
+
       </div>
     </section>
   </main>

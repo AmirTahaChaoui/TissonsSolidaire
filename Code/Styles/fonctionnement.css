@@ -42,7 +42,7 @@
 
 /* Titres de section */
 .section-gap{ margin-top: 100px; }
-.section-title{ text-align:center; margin: 0 0 8px;}
+.section-title{ text-align:center; margin: 0 0 8px; font-weight:1}
 .section-sub{ text-align:center; margin-bottom: 40px; color:#5a666f }
 
 /* Étapes (4 colonnes) */
@@ -111,7 +111,7 @@
 .chips{ display:flex; flex-wrap:wrap; gap:8px; }
 .chip{
   display:inline-block; padding:6px 10px; border-radius:9px;
-  border:1px solid #cecece; font-weight:1; font-size:0.8rem;
+  border:1px solid #cecece; font-size:0.8rem;
 }
 .reject-card .bad-list{ margin:0; padding-left: 18px; color:#4a565f; }
 .reject-card .bad-list li{ margin: 10px 0; list-style: disc; }
