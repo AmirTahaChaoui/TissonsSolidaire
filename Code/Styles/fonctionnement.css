@@ -27,7 +27,7 @@
   border: 1.5px solid var(--border);
   border-radius: 12px;
   padding: 30px 100px;
-  width: 20em;
+  width: 16em;
   height: 7em;
 }
 .info-card h3{ margin: 0 0 6px; font-size: 1.02rem; }
