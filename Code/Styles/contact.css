@@ -1,3 +1,8 @@
+/* ===========================
+   Page Contact — s’appuie sur style.css
+   =========================== */
+
+/* En‑tête (hero) */
 .page-hero{
   margin: 22px auto 18px;
   background: linear-gradient(180deg, #eefdf6 0%, #f0f6ff 100%);
@@ -9,6 +14,7 @@
 .page-hero h1{ margin: 0 0 6px; font-size: 2.1rem; }
 .page-hero .lead{ margin: 0; color: #4a575f; }
 
+/* Cartes coordonnées (4 tuiles) */
 .contact-cards{
   display: grid; grid-template-columns: repeat(4, 1fr);
   gap: 16px; margin-bottom: 24px;
@@ -16,7 +22,8 @@
 .contact-card{ text-align:center; padding: 22px 16px; }
 .card-ic{
   width: 44px; height: 44px; border-radius: 999px; margin: 2px auto 8px;
-  display: grid; place-items: center; font-size: 1.2rem; border: 1px solid #cfeee0; background:#eafcf1; color:#17994b;
+  display: grid; place-items: center; font-size: 1.2rem;
+  border: 1px solid #cfeee0; background:#eafcf1; color:#17994b;
 }
 .card-ic.b{ background:#eef3ff; color:#2a6de6; border-color:#d6e1ff; }
 .card-ic.p{ background:#f5eaff; color:#7a3fe6; border-color:#e7d9ff; }
@@ -24,49 +31,134 @@
 .card-ic.r{ background:#ffecec; color:#ce3434; border-color:#ffd4d4; }
 .contact-card h3{ margin: 6px 0 6px; }
 
-.grid-two{
-  display: grid; grid-template-columns: 1.1fr .9fr; gap: 18px; margin-bottom: 24px;
-}
-.section-mini{ margin: 0 0 10px; font-size: 1.2rem; }
+/* ===========================
+   Bloc Formulaire + Carte (fidèle à la maquette)
+   =========================== */
 
-.contact-form{ display: grid; gap: 12px; }
-.form-row{ display: grid; gap: 12px; }
-.form-row.two{ grid-template-columns: 1fr 1fr; gap: 12px; }
+/* Grille 2 colonnes */
+.contact-two{
+  display:grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: 28px;
+  align-items:start;
+  margin: 16px auto 28px;
+}
+/* Alias si ton HTML utilise encore .grid-two */
+.grid-two{ 
+    display:grid; 
+    grid-template-columns: 1.05fr .95fr; 
+    gap:28px; 
+    align-items:start; 
+    margin:16px auto 28px;
+    }
+
+.form-box,
+.map-box{
+  background:#fff;
+  border:1.5px solid #e9edf2;
+  border-radius:16px;
+  padding:18px 18px 16px;
+  box-shadow:0 1px 0 #f5f7f9;
+  width:100%; 
+}
+.contact-col-title{
+  margin:0 0 12px;
+  font-size:1.6rem;
+  line-height:1.25;
+  color:#121820;
+}
+
+/* Formulaire compact */
+.contact-form-tight{ display:grid; gap:12px; }
+.contact-form-tight .row{ display:grid; gap:12px; }
+.contact-form-tight .row.two{ grid-template-columns:1fr 1fr; gap:12px; }
+
+/* Compat: anciens noms (si tu n'as pas changé le HTML) */
+.contact-form{ display:grid; gap:12px; }
+.form-row{ display:grid; gap:12px; }
+.form-row.two{ grid-template-columns:1fr 1fr; gap:12px; }
+
 .field label{
-  display:block; font-weight:600; margin: 3px 0 6px; font-size:.95rem;
+  display:block;
+  font-weight:700;
+  color:#0f1720;
+  margin:2px 0 8px;
+  letter-spacing:0.2px;
 }
-.field input, .field select, .field textarea{
-  width:100%; background:#f7f8fa; border:1.5px solid var(--border);
-  border-radius: 10px; padding: 10px 12px; font-size: 1rem; color:#1a1d21; outline:none;
+.field input,
+.field select,
+.field textarea{
+  width:100%;
+  font-size:1.02rem;
+  color:#111827;
+  background:#f2f3f6;              /* gris doux comme la capture */
+  border:1px solid transparent;     /* pas de bord visible */
+  border-radius:12px;
+  padding:12px 14px;
+  outline:none;
+  transition:box-shadow .15s ease, background .15s ease;
 }
-.field textarea{ resize: vertical; }
-.field input:focus, .field select:focus, .field textarea:focus{
-  box-shadow: 0 0 0 2px #cfeee0;
-}
-.select-wrap{ position: relative; }
-.select-wrap select{
-  appearance:none; padding-right: 36px;
-  background-image: url('data:image/svg+xml;utf8,<svg fill="none" stroke="%239aa6b2" stroke-width="2" viewBox="0 0 14 8" xmlns="http://www.w3.org/2000/svg"><path d="M1 1l6 6 6-6"/></svg>');
-  background-repeat:no-repeat; background-position: right 12px center; background-size: 18px 10px;
+.field textarea{ padding:12px 14px; resize:vertical; min-height:120px; }
+.field input:focus,
+.field select:focus,
+.field textarea:focus{
+  background:#eef1f5;
+  box-shadow:0 0 0 3px #cfe8dc;     /* halo vert très léger */
 }
 
-.form-actions{ margin-top: 4px; }
-.form-actions .btn{ width:100%; border-radius:10px; }
-
-.map-card{ padding: 16px; }
-.map-placeholder{
-  height: 140px; border-radius: 12px; background:#e9ecf3;
-  display:flex; align-items:center; justify-content:center; flex-direction:column; gap: 6px;
-  color:#2c3340; margin-bottom: 10px;
+/* Select avec chevron interne */
+.field select{
+  appearance:none; -webkit-appearance:none; -moz-appearance:none;
+  padding-right:42px;
+  background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="10" viewBox="0 0 16 10"><path d="M1 1l7 7 7-7" fill="none" stroke="%2395a2b1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+  background-repeat:no-repeat; background-position:right 14px center; background-size:16px 10px;
 }
-.pin{ font-size: 1.6rem; }
-.map-label{ text-align:center; font-size:.98rem; color:#47505a; }
-.map-btn{
-  width:100%; border-radius: 10px; padding:10px 16px;
-  background:#f7f8fa; border:1px solid var(--border); color:#1a1d21; text-decoration:none; font-weight:600;
-}
-.map-btn:hover{ background:#fff }
 
+/* Bouton vert pleine largeur avec icône avion */
+.send-btn{
+  margin-top:6px;
+  width:100%;
+  display:flex; align-items:center; justify-content:center; gap:10px;
+  background:#0aa043; color:#fff;
+  font-weight:800; font-size:1.04rem;
+  border:none; border-radius:12px;
+  padding:14px 16px; cursor:pointer;
+  transition:background .15s ease, transform .02s ease;
+}
+.send-btn:hover{ background:#0a8a3b; }
+.send-btn:active{ transform:translateY(1px); }
+.send-btn::before{
+  content:"";
+  width:18px; height:18px;
+  background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"><path fill="%23ffffff" d="M2.01 21 23 12 2.01 3 2 10l15 2-15 2 .01 7Z"/></svg>');
+  background-repeat:no-repeat; background-size:18px 18px; background-position:center;
+}
+
+/* Carte grisée large */
+.map-canvas{
+  height:300px;
+  border-radius:14px;
+  background:#e6e9ef;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px;
+  color:#2c3543; margin:6px 0 14px;
+  box-shadow:inset 0 0 0 1px #dde2e8;
+}
+.map-title{ font-weight:800; color:#243041; }
+.map-sub{ color:#516074; }
+
+/* Bouton Maps blanc, bord fin, plein largeur */
+.map-cta{
+  display:block; width:100%; text-align:center; text-decoration:none;
+  color:#0f1720; background:#ffffff;
+  border:1px solid #e7eaf0; border-radius:12px;
+  padding:12px 16px; font-weight:800;
+  transition:background .15s ease, border-color .15s ease;
+}
+.map-cta:hover{ background:#f9fafb; border-color:#dfe5ec; }
+
+/* ===========================
+   Réseaux sociaux (panneau simple)
+   =========================== */
 .social-panel{ margin-bottom: 26px; }
 .social-card{ text-align:center; padding: 18px 16px; }
 .social-buttons{ display:flex; gap: 10px; justify-content:center; flex-wrap: wrap; margin: 6px 0 4px; }
@@ -76,29 +168,47 @@
 }
 .soc-btn:hover{ background:#fff }
 .soc-btn.fb{ color:#1877f2 } .soc-btn.ig{ color:#d62976 } .soc-btn.tw{ color:#1da1f2 }
+.small{ font-size:.95rem; }
 
-.donations{ background:#f3fff8; border-top:1px solid #dff6ea; padding: 34px 0; }
-.don-grid{ display:grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 8px; }
+/* ===========================
+   Dons (deux cartes : ponctuel / mensuel)
+   =========================== */
+.donations{
+  background:#f3fff8; border-top:1px solid #dff6ea; padding: 34px 0;
+}
+.section-title{ text-align:center; margin:0 0 6px; font-size:1.55rem; }
+.section-sub{ text-align:center; margin:0 0 18px; color:#5a666f; }
+.don-grid{
+  display:grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 8px;
+}
 .don-card{ text-align:center; padding: 18px 16px; }
 .don-ic{ font-size:1.6rem; margin-bottom: 6px; }
-.amounts{ display:grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 10px 0 12px; }
+.amounts{
+  display:grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 10px 0 12px;
+}
 .amount{
   background:#fff; border:1.5px solid var(--border); border-radius: 10px; padding: 10px 0;
-  font-weight:700; cursor:pointer;
+  font-weight:700; cursor:pointer; transition:border-color .12s ease, box-shadow .12s ease;
 }
 .amount:hover{ border-color:#bfe9d2; box-shadow:0 2px 10px #dfeee8; }
 .btn.full{ width:100%; border-radius: 10px; }
 .mini-note{ text-align:center; margin-top: 14px; font-size: .93rem; }
 
+/* Liens utiles */
 .link{ color:#2a6de6; text-decoration:none; }
 .link:hover{ text-decoration:underline; }
 
+/* ===========================
+   Responsive
+   =========================== */
 @media (max-width: 1080px){
   .contact-cards{ grid-template-columns: 1fr 1fr; }
-  .grid-two{ grid-template-columns: 1fr; }
+}
+@media (max-width: 980px){
+  .contact-two, .grid-two{ grid-template-columns: 1fr; }
+  .contact-form-tight .row.two, .form-row.two{ grid-template-columns:1fr; }
 }
 @media (max-width: 680px){
-  .form-row.two{ grid-template-columns: 1fr; }
   .don-grid{ grid-template-columns: 1fr; }
   .amounts{ grid-template-columns: repeat(2, 1fr); }
 }
