@@ -1,20 +1,8 @@
 /* Styles spécifiques à la page Impact écologique — repose sur style.css */
 
-.page-hero{
-  margin: 22px auto 18px;
-  background: linear-gradient(180deg, #eefdf6 0%, #f0f6ff 100%);
-  border: 1px solid #e7f3ee;
-  border-radius: 14px;
-  padding: 28px 22px;
-  text-align: center;
-}
-.page-hero h1{ margin: 0 0 6px; font-size: 2.1rem; }
-.page-hero .accent{ color: #14a058; }
-.page-hero .lead{ margin: 0; color: #4a575f; }
 
 /* Section helpers */
 .section-gap{ margin: 72px auto 32px; padding: 12px 0; }
-.section-title{ text-align:center; margin: 0 0 6px; font-size: 1.85rem; }
 .section-sub{ text-align:center; margin: 0 0 22px; color:#5a666f }
 
 /* Page-specific muted color to ensure readability on light backgrounds */
@@ -199,26 +187,7 @@
 .cert-ic.p{ background:#f5eaff; color:#7a3fe6; border-color:#e7d9ff; }
 
 /* CTA */
-.band-cta{
-  background: linear-gradient(180deg,#0ea63b 0%, #129b33 100%);
-  color: #ffffff;
-  padding: 42px 0 52px;
-  margin-top: 28px;
-}
-.band-cta .container{ text-align:center; }
-.band-cta h2{ color: #ffffff; margin: 0 0 8px; font-size: 1.75rem; font-weight: 600; }
-.band-cta p{ color: rgba(255,255,255,0.95); margin: 0 0 18px; }
-.band-cta .impact-pill{
-  display:inline-block;
-  margin-top:6px;
-  background: #17b24f; /* slightly lighter green */
-  color:#fff;
-  border-radius: 10px;
-  padding:12px 22px;
-  font-weight:800;
-  box-shadow: 0 8px 22px rgba(8,90,36,0.18);
-  font-size: 1rem;
-}
+.cta h2{ color: #ffffff;}
 
 /* Buttons inside the band */
 .band-cta .actions{ display:flex; gap:12px; justify-content:center; margin-top:14px; }
