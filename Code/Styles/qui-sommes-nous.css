@@ -160,39 +160,7 @@
   .person .avatar{ width:72px; height:72px; font-size:1.6rem; }
 }
 
-/* Reconnaissances */
-.awards{ margin: 40px auto 40px; text-align: center; max-width:1200px; }
-.awards .sub{ color: #5a666f; margin: 0 0 22px; }
-.awards-grid{
-  display: grid; gap: 28px; grid-template-columns: repeat(3, 1fr);
-  align-items: stretch; justify-items: center; grid-auto-rows: 1fr;
-}
-.award{
-  background:#fff; border:1px solid #e9edf2; border-radius:14px;
-  padding:32px 24px; box-shadow:0 8px 24px rgba(16,24,40,0.06);
-  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px;
-  text-align:center; min-height:200px; width:100%;
-}
-.badge-ic{
-  width:56px; height:56px; border-radius:999px; margin:0 auto 12px;
-  display:grid; place-items:center; font-size:1.6rem; color:#fff;
-  background: linear-gradient(135deg,#ffd54a,#ffb300); /* default warm */
-}
-/* color variants for badges */
-.awards-grid > .award:nth-child(1) .badge-ic{ background: linear-gradient(135deg,#ffd54a,#ffb300); }
-.awards-grid > .award:nth-child(2) .badge-ic{ background: linear-gradient(135deg,#7ee083,#0aa043); }
-.awards-grid > .award:nth-child(3) .badge-ic{ background: linear-gradient(135deg,#6fb6ff,#2a8dff); }
-.award h3{ margin:6px 0 8px; font-weight:800; color:#121820; }
-.award .muted{ margin:0; color:#6b7780; }
 
-@media (max-width: 860px){
-  .awards-grid{ grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 520px){
-  .awards-grid{ grid-template-columns: 1fr; }
-  .award{ padding:20px 14px; min-height:auto; }
-  .badge-ic{ width:48px; height:48px; font-size:1.4rem; }
-}
 
 /* Responsive */
 @media (max-width: 1000px){

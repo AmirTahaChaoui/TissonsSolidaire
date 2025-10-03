@@ -176,16 +176,6 @@
 .bar-fill.g{ background:#1bc05e } .bar-fill.b{ background:#2a6de6 }
 .bar-list em{ font-style: normal; color:#2c3340; font-size:.95rem; }
 
-/* Certifications */
-.cert-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
-.cert{ text-align:center; padding: 22px 16px; }
-.cert-ic{
-  width: 44px; height: 44px; border-radius: 12px; margin: 0 auto 10px; display:grid; place-items:center; font-size:1.2rem;
-  border:1px solid #cfeee0; background:#eafcf1; color:#17994b;
-}
-.cert-ic.b{ background:#eef3ff; color:#2a6de6; border-color:#d6e1ff; }
-.cert-ic.p{ background:#f5eaff; color:#7a3fe6; border-color:#e7d9ff; }
-
 /* CTA */
 .cta h2{ color: #ffffff;}
 
