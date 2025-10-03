@@ -291,11 +291,7 @@
 }
 .green-cta:hover{ background:#0a8e3c; }
 .green-cta:active{ transform:translateY(1px); }
-.ic-heart{
-  width:18px; height:18px; display:inline-block;
-  background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="%23ffffff" d="M12 21s-7.2-4.35-9.6-8.4C.86 9.5 2.3 6 5.4 6c2.04 0 3.06 1.2 3.6 2 .54-.8 1.56-2 3.6-2 3.1 0 4.54 3.5 3 6.6C19.2 16.65 12 21 12 21z"/></svg>');
-  background-repeat:no-repeat; background-size:18px 18px; background-position:center;
-}
+.ic-heart{width:13px;}
 
 /* note en bas */
 .mini-note{ text-align:center; margin-top:18px; font-size:.93rem; }

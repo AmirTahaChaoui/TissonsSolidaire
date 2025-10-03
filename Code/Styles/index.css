@@ -41,6 +41,11 @@ header {
   font-size: 1.1em;
   gap: 10px;
 }
+.brand-footer {
+  display:flex;
+  align-items:center;
+  gap:5px;
+}
 .nav-links {
   display: flex;
   gap: 2em;
@@ -136,12 +141,6 @@ header {
   width:100%; height:auto; display:block; border-radius:14px;
 }
 
-.hero-image{
-  background: linear-gradient(180deg, #fff 0%, #f7fffb 100%);
-  border-radius: 14px; padding: 8px; box-shadow: 0 12px 40px rgba(11,104,70,0.08);
-}
-
-.hero-image img{ border-radius:12px; display:block; }
 
 /* small screens */
 @media (max-width: 900px){
@@ -282,7 +281,7 @@ h1 {
 .footer-col li{margin:8px 0}
 .footer-col a{color:#d5f7e8; text-decoration:none}
 .footer-col a:hover{text-decoration:underline; color:#6ff0a6}
-.muted{color:#b8dfcf}
+.muted-footer{color:#b8dfcf}
 .socials a{margin-right:10px; color:#fff; font-size:1.2rem}
 .socials a:hover{color:#8ef5bb}
 .footer-bottom{
