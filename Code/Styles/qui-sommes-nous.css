@@ -55,52 +55,49 @@
 
 
 .mission .actions{ display: flex; gap: 10px; flex-wrap: wrap; }
-/* Image à droite (grande, arrondie, ombre douce) */
-.mission-image{ align-self:stretch; }
 .mission-image img{
   width:100%; height:100%;
   object-fit:cover;
-  aspect-ratio: 16 / 10;
   border-radius:16px;
-  box-shadow:0 10px 28px rgba(16,24,40,.12);
 }
 
 /* Chiffres clés */
-.about-stats{ margin: 40px auto 30px; text-align: center; max-width:1200px; }
-.about-stats h2{ margin: 0 0 10px; font-size: clamp(1.6rem, 2.6vw, 2rem); }
+.about-stats{ margin:40px auto 30px; text-align:center; max-width:1200px; display:flex; flex-direction:column; align-items:center; }
 .about-stats .sub{ color: #5a666f; margin: 0 0 26px; }
 
 .stats-grid{
-  display: grid; gap: 28px;
-  grid-template-columns: repeat(4, 1fr);
-  align-items: stretch;
-  justify-items: center; /* centre chaque carte dans sa cellule */
-  grid-auto-rows: 1fr;   /* force des cellules de même hauteur */
+  /* 3 colonnes fixes centrées, sans colonne vide */
+  display:grid;
+  gap:100px;
+  grid-template-columns: repeat(3, minmax(200px, 240px));
+  justify-content:center; /* centre l'ensemble des colonnes dans la largeur dispo */
+  justify-items:center;   /* centre le contenu dans chaque colonne */
+  align-items:stretch;
+  grid-auto-rows:1fr;
+  margin-top: 30px;          /* recentre le bloc si largeur réduite */
+  max-width: calc(3 * 240px + 2 * 28px); /* limite la largeur totale pour éviter l'étirement */
 }
 .stat-card{
-  background: #fff; border: 1px solid #e9edf2; border-radius: 14px;
-  padding: 34px 20px; text-align: center;
-  box-shadow: 0 6px 18px rgba(16,24,40,0.06);
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  gap:8px;
-  min-height: 160px; /* assure une hauteur homogène */
+  background:#fff; border:1px solid #e9edf2; border-radius:14px;
+  padding:34px 20px; text-align:center;
+  box-shadow:0 6px 18px rgba(16,24,40,0.06);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;
+  min-height:160px; /* hauteur homogène */
+  width:100%; max-width:240px; /* largeur contrôlée pour éviter l'étirement */
+  overflow:hidden; /* évite débordements visuels inattendus */
 }
 .stat-card .ic{
   width: 56px; height: 56px; border-radius: 999px; margin: 0 auto 12px;
   display: grid; place-items: center; background: #f7fff6; color: #0aa043; font-size: 1.6rem;
 }
-.stat-card .num{ font-weight: 900; color: #0aa043; font-size: clamp(1.6rem, 3.2vw, 2.4rem); margin-bottom:8px; }
-.stat-card .lab{ color: #6b7780; font-size: .98rem; }
-.stat-card .num{ white-space: nowrap; }
+.stat-card .num{ background: white; width: 170px; white-space: nowrap; color: #0aa043; font-size: clamp(1.6rem, 3.2vw, 2.4rem); margin-bottom:8px; }
+.stat-card .lab{ color:#6b7780; font-size:.95rem; line-height:1.35; width:100%; overflow-wrap:break-word; word-break:break-word; }
 
 /* Valeurs (cartes arrondies, icônes en cercle, texte centré) */
 .values{ margin: 40px auto 40px; text-align: center; max-width:1200px; }
 .values .sub{ color: #5a666f; margin: 0 0 20px; }
 .values-grid{
-  display: grid; gap: 24px; grid-template-columns: repeat(4, 1fr);
+  display: grid; gap: 100px; grid-template-columns: repeat(4, 1fr);
   align-items: stretch;
   justify-items: center;
   grid-auto-rows: 1fr; /* cartes mêmes hauteurs */
@@ -168,12 +165,13 @@
   .mission-image img{ max-height: 320px; }
 }
 @media (max-width: 860px){
-  .stats-grid{ grid-template-columns: 1fr 1fr; }
+  .stats-grid{ grid-template-columns: 1fr 1fr; max-width:600px; }
   .values-grid{ grid-template-columns: 1fr 1fr; }
   .team-grid{ grid-template-columns: 1fr 1fr; }
   .awards-grid{ grid-template-columns: 1fr; }
 }
 @media (max-width: 520px){
+  .stats-grid{ grid-template-columns: 1fr; max-width:320px; }
   .stat-card{ padding:20px 12px; min-height: 130px; }
   .stat-card .num{ font-size: clamp(1.2rem, 5vw, 1.6rem); }
 }
